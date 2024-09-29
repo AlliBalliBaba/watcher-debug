@@ -10,6 +10,12 @@ int main(int argc, char *argv[]){
   uintptr_t data = 0;
   void *watcher = wtr_watcher_open("/go/src/app", handle_event, (void *)data);
 
+  // check if watcher is NULL
+  if(watcher == NULL) {
+	printf("wacher is NULL\n");
+	return 1;
+  }
+
   // wtr_watcher_close returns true
   if (wtr_watcher_close((void *)watcher)) {
     printf("success\n");
